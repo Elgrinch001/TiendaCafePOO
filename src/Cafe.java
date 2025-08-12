@@ -2,10 +2,10 @@ public class Cafe {
 
     String nombre;
     String region;
-    float precioPorKilo;
-    float cantidadEnKilos;
+    double precioPorKilo;
+    double cantidadEnKilos;
 
-    public Cafe(String nombre, String region, float precioPorKilo, float cantidadEnKilos) {
+    public Cafe(String nombre, String region, double precioPorKilo, double cantidadEnKilos) {
         this.nombre = nombre;
         this.region = region;
         this.precioPorKilo = precioPorKilo;
@@ -20,12 +20,24 @@ public class Cafe {
         System.out.println("-----------------------------");
     }
 
-    public float calcularPrecioTotal() {
+    public double calcularPrecioTotal() {
         return precioPorKilo * cantidadEnKilos;
     }
 
-    public void actualizarCantidad(float nuevaCantidad) {
+    public void actualizarCantidad(double nuevaCantidad) {
         cantidadEnKilos = nuevaCantidad;
     }
 
+
+    public void aplicarDescuento(double porcentaje) {
+    if (porcentaje > 0 && porcentaje < 100) {
+        double descuento = precioPorKilo * (porcentaje / 100);
+        precioPorKilo = precioPorKilo - descuento; 
+        System.out.println("Se aplicó un descuento del " + porcentaje + "%. Nuevo precio por kilo: " + precioPorKilo);
+    } else {
+        System.out.println("Porcentaje inválido. Debe estar entre 0 y 100.");
+    }
 }
+
+}
+
